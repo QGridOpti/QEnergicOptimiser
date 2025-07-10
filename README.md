@@ -58,5 +58,5 @@ QEnergic blends:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/QEnergic.git
+git clone https://github.com/QGridOpti/QGrid.git
 cd QEnergic
