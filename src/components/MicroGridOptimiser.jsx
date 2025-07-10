@@ -119,7 +119,7 @@ export default function MicrogridOptimizer() {
           {/* QEnergy */}
           <img className="w-40 h-30" src={logo} alt="logo" />
         </div>
-        <p className="text-gray-400 text-lg md:text-[40px] text-[#FAB12F] font-bold">
+        <p className=" text-lg md:text-[40px] text-[#FAB12F] font-bold">
           QEnergic Solar Grid placement optimization Software
         </p>
         <p className="lg:mx-60 mt-5 text-white">This software enables energy developers, governments, and utility providers to maximumise energy access by using quantum optimization and geospatial intelligence to deliver precise, scalable, and data-driven grid placement solutions.</p>
