@@ -134,12 +134,81 @@ export default function MicrogridOptimizer() {
                   Interactive Map
                 </h2>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-300">
+              <div className="flex flex-col items-center gap-2 text-sm text-gray-300">
                 <Target className="w-4 h-4 text-emerald-400" />
                 <span>
                   Click on the map to select boundary points • Need at least 3
                   points to optimize
                 </span>
+                {/* Location Input */}
+        <div className="mb-4">
+
+          <div className="flex">
+          {/* <h3 className="text-white text-base font-semibold mb-2">Add Points</h3> */}
+          <div className="grid grid-cols-2 gap-2 mb-2">
+            <input
+              type="number"
+              value={manualLat}
+              onChange={(e) => setManualLat(e.target.value)}
+              placeholder="Latitude"
+              step="0.0001"
+              className="w-full bg-slate-700 border border-slate-500 text-white px-3 py-2 rounded-md text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400"
+            />
+            <input
+              type="number"
+              value={manualLng}
+              onChange={(e) => setManualLng(e.target.value)}
+              placeholder="Longitude"
+              step="0.0001"
+              className="w-full bg-slate-700 border border-slate-500 text-white px-3 py-2 rounded-md text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400"
+            />
+          </div>
+          <button
+            onClick={() => {
+              const lat = parseFloat(manualLat);
+              const lng = parseFloat(manualLng);
+              if (!isNaN(lat) && !isNaN(lng)) {
+                setPolygonPoints([...polygonPoints, [lat, lng]]);
+                setManualLat("");
+                setManualLng("");
+              } else {
+                alert("Please enter valid coordinates.");
+              }
+            }}
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          >
+            Add Point
+          </button>
+          </div>
+          {/* Action Buttons */}
+         <div className="flex gap-2 pt-3 items-center justify-between">
+              <button
+                onClick={calculateCentroids}
+                disabled={polygonPoints.length < 3 || isCalculating}
+                className="flex-1 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 disabled:from-gray-500 disabled:to-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200"
+              >
+                {isCalculating ? (
+                  <>
+                    <Activity className="w-4 h-4 animate-spin" />
+                    Calculating...
+                  </>
+                ) : (
+                  <>
+                    <Calculator className="w-4 h-4" />
+                    Optimize
+                  </>
+                )}
+              </button>
+              <button
+                onClick={clearSelection}
+                className="bg-gradient-to-r  h-10 from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200"
+              >
+                <Trash2 className="w-4 h-4" />
+                Clear
+              </button>
+            </div>
+        </div>
+        
               </div>
             </div>
 
@@ -381,73 +450,10 @@ export default function MicrogridOptimizer() {
           </div>
         </div>
 
-        {/* Location Input */}
-        <div className="mb-4">
-          <h3 className="text-white text-base font-semibold mb-2">Add Points</h3>
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            <input
-              type="number"
-              value={manualLat}
-              onChange={(e) => setManualLat(e.target.value)}
-              placeholder="Latitude"
-              step="0.0001"
-              className="w-full bg-slate-700 border border-slate-500 text-white px-3 py-2 rounded-md text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400"
-            />
-            <input
-              type="number"
-              value={manualLng}
-              onChange={(e) => setManualLng(e.target.value)}
-              placeholder="Longitude"
-              step="0.0001"
-              className="w-full bg-slate-700 border border-slate-500 text-white px-3 py-2 rounded-md text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-400"
-            />
-          </div>
-          <button
-            onClick={() => {
-              const lat = parseFloat(manualLat);
-              const lng = parseFloat(manualLng);
-              if (!isNaN(lat) && !isNaN(lng)) {
-                setPolygonPoints([...polygonPoints, [lat, lng]]);
-                setManualLat("");
-                setManualLng("");
-              } else {
-                alert("Please enter valid coordinates.");
-              }
-            }}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-          >
-            Add Point
-          </button>
-        </div>
+        
 
         {/* Action Buttons */}
-         {/* Action Buttons */}
-         <div className="flex gap-2 pt-3 items-center justify-between">
-              <button
-                onClick={calculateCentroids}
-                disabled={polygonPoints.length < 3 || isCalculating}
-                className="flex-1 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 disabled:from-gray-500 disabled:to-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200"
-              >
-                {isCalculating ? (
-                  <>
-                    <Activity className="w-4 h-4 animate-spin" />
-                    Calculating...
-                  </>
-                ) : (
-                  <>
-                    <Calculator className="w-4 h-4" />
-                    Optimize
-                  </>
-                )}
-              </button>
-              <button
-                onClick={clearSelection}
-                className="bg-gradient-to-r  h-10 from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200"
-              >
-                <Trash2 className="w-4 h-4" />
-                Clear
-              </button>
-            </div>
+         
       </div>
     
       
