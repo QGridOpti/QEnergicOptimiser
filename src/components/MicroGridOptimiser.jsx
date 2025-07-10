@@ -254,6 +254,27 @@ export default function MicrogridOptimizer() {
             </div>
           </div>
 
+          <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-4 border border-slate-600 shadow-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <Power className="w-5 h-5 text-yellow-400" />
+              <h3 className="text-lg font-semibold text-white">System Status</h3>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-300">Optimizer: Active</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-300">Map: Online</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-300">Analytics: Running</span>
+              </div>
+            </div>
+          </div>
+
           
         </div>
         {/* Grid Type Selection */}
