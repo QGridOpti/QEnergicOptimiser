@@ -191,25 +191,25 @@ export default function MicrogridOptimizer() {
                 <div className="text-2xl font-bold text-emerald-400">
                   {polygonPoints.length}
                 </div>
-                <div className="text-xs text-gray-400">Points</div>
+                <div className="text-xs text-gray-400">Location Points</div>
               </div>
               <div className="bg-slate-900/50 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-blue-400">
                   {stats.totalGrids}
                 </div>
-                <div className="text-xs text-gray-400">Grids</div>
+                <div className="text-xs text-gray-400">Toatal Number of Grids</div>
               </div>
               <div className="bg-slate-900/50 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-purple-400">
                   {stats.estimatedCoverage.toFixed(0)}%
                 </div>
-                <div className="text-xs text-gray-400">Coverage</div>
+                <div className="text-xs text-gray-400">Population Coverage</div>
               </div>
               <div className="bg-slate-900/50 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-yellow-400">
-                  {stats.powerCapacity.toFixed(1)}
+                  {stats.powerCapacity.toFixed(1)}MW
                 </div>
-                <div className="text-xs text-gray-400">MW</div>
+                <div className="text-xs text-gray-400">Energy Output</div>
               </div>
             </div>
           </div>
@@ -220,9 +220,9 @@ export default function MicrogridOptimizer() {
               <Activity className="w-5 h-5 text-emerald-400" />
               <h3 className="text-lg font-semibold text-white">Region Details</h3>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Area</span>
+                <span className="text-sm text-gray-400">Grid Area</span>
                 <span className="text-sm font-medium text-white">
                   {selectedRegionArea.toFixed(1)} km²
                 </span>
@@ -246,7 +246,7 @@ export default function MicrogridOptimizer() {
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Budget</span>
+                <span className="text-sm text-gray-400">Installation Cost</span>
                 <span className="text-sm font-medium text-white">
                   ${selectedBudget.toLocaleString()}
                 </span>
