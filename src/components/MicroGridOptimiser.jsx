@@ -99,7 +99,7 @@ export default function MicrogridOptimizer() {
       setCentroids(calculatedCentroids);
       setStats({
         totalGrids: calculatedCentroids.length,
-        estimatedCoverage: calculatedCentroids.length * 12,
+        estimatedCoverage: calculatedCentroids.length * 80,
         powerCapacity: calculatedCentroids.length * 1.2,
       });
       setIsCalculating(false);
@@ -119,7 +119,7 @@ export default function MicrogridOptimizer() {
           {/* QEnergy */}
           <img className="w-40 h-30" src={logo} alt="logo" />
         </div>
-        <p className=" text-lg md:text-[40px] text-[#f97316] font-bold">
+        <p className=" text-lg md:text-[40px] text-[#f69914] font-bold">
           QEnergic Solar Grid placement optimization Software
         </p>
         <p className="lg:mx-60 mt-5 text-white">This software enables energy developers, governments, and utility providers to maximumise energy access by using quantum optimization and geospatial intelligence to deliver precise, scalable, and data-driven grid placement solutions.</p>
@@ -134,11 +134,11 @@ export default function MicrogridOptimizer() {
                   Interactive Map
                 </h2>
               </div>
-                              <Target className="w-4 h-4 text-emerald-400" />
+                             <div className="flex gap-3 items-center"> <Target className="w-4 h-4 text-emerald-400" /><span className="text-white text-base font-semibold mb-2">Region of Interest</span></div>
 
               <div className="flex flex-col items-center gap-2 text-sm text-gray-300">
                 <span>
-                  Click on the map to select boundary points • Need at least 3
+                  Click on the map to select boundary points or enter cordinates manually • Need at least 3
                   points to optimize
                 </span>
                 {/* Location Input */}
@@ -267,7 +267,7 @@ export default function MicrogridOptimizer() {
                 <div className="text-2xl font-bold text-blue-400">
                   {stats.totalGrids}
                 </div>
-                <div className="text-xs text-gray-400">Toatal Number of Grids</div>
+                <div className="text-xs text-gray-400">Total Number of Grids</div>
               </div>
               <div className="bg-slate-900/50 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-purple-400">
